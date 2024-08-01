@@ -1,16 +1,19 @@
 package com.example.stage.stage.dto;
 
 
+import com.example.stage.stage.entity.Matiere;
+import com.example.stage.stage.entity.Sujet;
+import lombok.Data;
 
-
-
+@Data
 public class SujetDTO {
     private Long id;
     private Long idMatiere;
     private MatiereDTO matiere;
     private int annee;
     private byte[] sujet;
-    private String type;
+    private Sujet.Type type;
+    private byte[] byteimg;
 
     // Constructeur par défaut
     public SujetDTO() {
@@ -23,7 +26,6 @@ public class SujetDTO {
         this.matiere = matiere;
         this.annee = annee;
         this.sujet = sujet;
-        this.type = type;
     }
 
     // Getters and Setters
@@ -47,9 +49,7 @@ public class SujetDTO {
         return matiere;
     }
 
-    public void setMatiere(MatiereDTO matiere) {
-        this.matiere = matiere;
-    }
+
 
     public int getAnnee() {
         return annee;
@@ -67,12 +67,7 @@ public class SujetDTO {
         this.sujet = sujet;
     }
 
-    public String getType() {
-        return type;
-    }
 
-    public void setType(String type) {
-        this.type = type;
-    }
+
 
 }

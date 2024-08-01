@@ -20,9 +20,10 @@ public class SujetService {
     private SujetRepository sujetRepository;
 
     public List<SujetDTO> getAllSujets() {
-        return sujetRepository.findAll().stream()
-            .map(this::convertToDto)
-            .collect(Collectors.toList());
+        List<Sujet> sujets = sujetRepository.findAll();
+
+        return sujets.stream().map(sujet -> sujet.getDto()).collect(Collectors.toList());
+
     }
 
     public Optional<SujetDTO> getSujetById(Long id) {
@@ -40,7 +41,7 @@ public class SujetService {
             sujet.setMatiere(convertToEntityMatiere(sujetDTO.getMatiere()));
             sujet.setAnnee(sujetDTO.getAnnee());
             sujet.setSujet(sujetDTO.getSujet());
-            sujet.setType(Sujet.Type.valueOf(sujetDTO.getType()));
+//            sujet.setType(Sujet.Type.valueOf(sujetDTO.getType()));
             return convertToDto(sujetRepository.save(sujet));
         } else {
             throw new RuntimeException("Sujet not found");
@@ -57,15 +58,13 @@ public class SujetService {
         dto.setMatiere(convertToDtoMatiere(sujet.getMatiere()));
         dto.setAnnee(sujet.getAnnee());
         dto.setSujet(sujet.getSujet());
-        dto.setType(sujet.getType().name());
+//        dto.setType(sujet.getType().name());
         return dto;
     }
 
     public List<SujetDTO> getSujetsByMatiereId(Long matiereId) {
         List<Sujet> sujets = sujetRepository.findByMatiere_Id(matiereId);
-        return sujets.stream()
-                     .map(this::convertToDto)
-                     .collect(Collectors.toList());
+        return   sujets.stream().map(sujet -> sujet.getDto()).collect(Collectors.toList());
     }
 
     private Sujet convertToEntity(SujetDTO dto) {
@@ -76,7 +75,7 @@ public class SujetService {
         sujet.setMatiere(matiere);
         sujet.setAnnee(dto.getAnnee());
         sujet.setSujet(dto.getSujet());
-        sujet.setType(Sujet.Type.valueOf(dto.getType()));
+//        sujet.setType(Sujet.Type.valueOf(dto.getType()));
         return sujet;
     }
 

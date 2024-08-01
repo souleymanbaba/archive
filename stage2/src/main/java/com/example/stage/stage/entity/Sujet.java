@@ -1,15 +1,7 @@
 package com.example.stage.stage.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.Lob;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
-
+import com.example.stage.stage.dto.SujetDTO;
+import jakarta.persistence.*;
 
 
 @Entity
@@ -26,6 +18,7 @@ public class Sujet {
     private int annee;
 
     @Lob
+    @Column(columnDefinition = "longblob")
     private byte[] sujet;
 
     public enum Type {
@@ -77,5 +70,15 @@ public class Sujet {
 
     public void setType(Type type) {
         this.type = type;
+    }
+
+    public SujetDTO getDto() {
+        SujetDTO sujetDTO = new SujetDTO();
+        sujetDTO.setAnnee(annee);
+        sujetDTO.setByteimg(sujet);
+        sujetDTO.setId(id);
+        sujetDTO.setType(type);
+
+        return sujetDTO;
     }
 }

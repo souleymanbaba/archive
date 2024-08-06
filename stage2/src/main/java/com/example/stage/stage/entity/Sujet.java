@@ -78,6 +78,7 @@ public class Sujet {
         sujetDTO.setByteimg(sujet);
         sujetDTO.setId(id);
         sujetDTO.setType(type);
+        sujetDTO.setNom_matiere(matiere.getNom());
 
         return sujetDTO;
     }

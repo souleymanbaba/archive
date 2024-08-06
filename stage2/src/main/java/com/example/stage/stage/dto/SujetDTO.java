@@ -10,6 +10,8 @@ public class SujetDTO {
     private Long id;
     private Long idMatiere;
     private MatiereDTO matiere;
+
+    private String nom_matiere;
     private int annee;
     private byte[] sujet;
     private Sujet.Type type;

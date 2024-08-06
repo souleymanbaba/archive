@@ -74,8 +74,8 @@ public class SujetService {
         matiere.setId(dto.getIdMatiere());
         sujet.setMatiere(matiere);
         sujet.setAnnee(dto.getAnnee());
-        sujet.setSujet(dto.getSujet());
-//        sujet.setType(Sujet.Type.valueOf(dto.getType()));
+        sujet.setSujet(dto.getByteimg());
+         sujet.setType(dto.getType());
         return sujet;
     }
 
